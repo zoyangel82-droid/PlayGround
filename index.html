@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#090b16" />
+  <title>Nocturne — Blood Moon</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game">
+    <canvas id="scene" aria-label="Nocturne 3D game scene"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>NOCTURNE<small>THE VEIL OF ETERNITY</small></span></div>
+      <div class="chapter"><span class="chapter-line"></span><div><small>CHAPTER I · THE HOLLOWING</small><strong>Whispers of the Blood Moon</strong></div></div>
+      <button class="icon-btn map-btn" id="mapToggle" aria-label="Toggle map"><span>⌖</span></button>
+      <button class="icon-btn sound-btn" id="soundToggle" aria-label="Toggle sound"><span>♪</span></button>
+      <button class="icon-btn pause-btn" id="pauseBtn" aria-label="Pause"><span>Ⅱ</span></button>
+    </header>
+    <section class="quest-card">
+      <div class="quest-kicker"><span class="tiny-diamond">◆</span> MOONLIT VIGIL</div>
+      <h2>Break the blood seal</h2>
+      <div class="quest-row"><span class="quest-icon">✧</span><span>Collect moon shards</span><b id="shardCount">0 / 3</b></div>
+      <div class="quest-row"><span class="quest-icon">☠</span><span>Defeat the nightbound</span><b id="enemyCount">0 / 5</b></div>
+      <div class="quest-progress"><i id="questProgress"></i></div>
+      <div class="quest-note">The gate stirs beyond the ruined chapel.</div>
+    </section>
+    <div class="location"><span class="location-pin">⌖</span><div><small>THE VEILED WOOD</small><strong>Crimson Hollow</strong></div></div>
+    <div class="mini-map" id="miniMap"><div class="map-title">CRIMSON HOLLOW <span>✦</span></div><div class="map-art"><span class="map-forest">♠　♠ ♠<br>　♠　　♠</span><i class="map-player"></i><i class="map-gate"></i><i class="map-enemy e1"></i><i class="map-enemy e2"></i><i class="map-shard s1">✦</i><i class="map-shard s2">✦</i><i class="map-shard s3">✦</i></div><div class="map-legend"><span><i class="legend-you"></i>YOU</span><span><i class="legend-enemy"></i>HOSTILE</span><span><i class="legend-shard"></i>SHARD</span></div></div>
+    <div class="status-row"><div class="health-wrap"><div class="health-label"><span><i class="heart">♥</i> VITALITY</span><b id="healthText">100%</b></div><div class="bar"><i id="healthBar"></i><span></span></div></div><div class="blood-wrap"><div class="blood-label"><span>✦ BLOOD ARTS</span><b id="bloodText">68%</b></div><div class="bar blood-bar"><i id="bloodBar"></i><span></span></div></div><div class="level-badge"><span>LVL</span><b>08</b></div></div>
+    <div class="combat-hint" id="combatHint"><span class="keycap">F</span> <span>Strike</span><i>·</i><span class="keycap">E</span><span>Blood dash</span><i>·</i><span class="keycap">Q</span><span>Crimson veil</span></div>
+    <div class="touch-controls" id="touchControls">
+      <div class="joystick" id="joystick"><div class="joy-ring"><div class="joy-knob" id="joyKnob"></div></div><span class="joy-label">MOVE</span></div>
+      <div class="mobile-actions"><button class="action-btn skill" data-action="skill"><span class="action-symbol">✦</span><small>VEIL</small><i class="cooldown" id="coolSkill"></i></button><button class="action-btn dash" data-action="dash"><span class="action-symbol">➤</span><small>DASH</small><i class="cooldown" id="coolDash"></i></button><button class="action-btn attack" data-action="attack"><span class="action-symbol">⚔</span><small>STRIKE</small><i class="attack-glow"></i></button></div>
+    </div>
+    <div class="center-message" id="centerMessage"></div>
+    <div class="start-screen" id="startScreen"><div class="start-backdrop"></div><div class="start-content"><div class="eyebrow"><span></span> A DARK FANTASY ADVENTURE <span></span></div><h1>NOCTURNE</h1><div class="subtitle">BLOOD MOON</div><div class="title-ornament">─── ✦ ───</div><p>The old seal is broken. Beneath the crimson moon,<br>the dead remember your name.</p><button id="startBtn" class="start-btn"><span>ENTER THE HOLLOW</span><b>→</b></button><div class="start-foot">WASD / ARROWS TO MOVE <i>•</i> F TO STRIKE <i>•</i> E TO DASH <i>•</i> Q FOR BLOOD VEIL</div></div><div class="start-version">v 1.0.4 <span>·</span> SINGLE PLAYER</div></div>
+    <div class="pause-screen hidden" id="pauseScreen"><div class="pause-card"><div class="eyebrow">THE WORLD HOLDS ITS BREATH</div><h2>PAUSED</h2><button class="start-btn" id="resumeBtn"><span>RETURN TO THE HOLLOW</span><b>→</b></button><div class="pause-tip">Your hunt is waiting.</div></div></div>
+    <div class="toast" id="toast"></div>
+    <div class="fade" id="fade"></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
